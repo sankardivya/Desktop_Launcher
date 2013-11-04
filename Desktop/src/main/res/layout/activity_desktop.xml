@@ -1,216 +1,270 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/screen"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".DesktopActivity" >
-
-    <TextView
-        android:id="@+id/fullscreen_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:keepScreenOn="true"
-        android:textColor="#33b5e5"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        tools:ignore="UselessParent" />
-
-    <RelativeLayout
-        android:id="@+id/fullscreen_content_controls"
-        android:layout_width="fill_parent"
-        android:layout_height="36dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_gravity="bottom"
-        android:background="@android:color/transparent"
-        android:orientation="horizontal" >
-
-        <LinearLayout
-            android:id="@+id/startbutton"
-            android:layout_width="36dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:background="@color/black_overlay"
-            android:orientation="vertical" >
-
-            <ImageButton
-                android:id="@+id/startbutton"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/screen"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@null"
-                android:clickable="true"
-                android:contentDescription="Start Button"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_launcher" />
+                tools:context=".DesktopActivity" >
+
+    <TextView
+            android:id="@+id/fullscreen_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:keepScreenOn="true"
+            android:textColor="#33b5e5"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            tools:ignore="UselessParent" />
+
+    <RelativeLayout
+            android:id="@+id/fullscreen_content_controls"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="bottom"
+            android:background="@android:color/transparent"
+            android:orientation="vertical" >
+
+        <LinearLayout
+                android:id="@+id/buttonlayout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:background="@color/black_overlay"
+                android:divider="@style/Divider"
+                android:dividerPadding="10dip"
+                android:layoutDirection="ltr"
+                android:orientation="horizontal"
+                android:showDividers="end" >
+
+            <ImageButton
+                    android:id="@+id/startbutton"
+                    android:layout_width="45dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/black_overlay"
+                    android:clickable="true"
+                    android:onClick="onStartClick()"
+                    android:contentDescription="Start Button"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_launcher" />
+
+            <ImageButton
+                    android:id="@+id/quicksettings"
+                    android:layout_width="45dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/black_overlay"
+                    android:clickable="true"
+                    android:contentDescription="Quick Settings"
+                    android:orientation="vertical"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/settings" />
+
+            <ImageButton
+                    android:id="@+id/notification"
+                    android:layout_width="45dp"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:clickable="@color/black_overlay"
+                    android:contentDescription="Notifications"
+                    android:drawingCacheQuality="auto"
+                    android:orientation="vertical"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/notification" />
+
+            <ImageButton
+                    android:id="@+id/homebutton"
+                    android:layout_width="45dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/black_overlay"
+                    android:clickable="true"
+                    android:contentDescription="Home"
+                    android:orientation="vertical"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/homeicon" />
+
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/systemtray"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:background="@color/black_overlay"
-            android:divider="@style/Divider"
-            android:dividerPadding="10dip"
-            android:layoutDirection="rtl"
-            android:orientation="horizontal"
-            android:showDividers="end" >
+                android:id="@+id/systemtray"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:background="@color/black_overlay"
+                android:divider="@style/Divider"
+                android:dividerPadding="10dip"
+                android:layoutDirection="rtl"
+                android:orientation="horizontal"
+                android:showDividers="end" >
 
             <ImageButton
-                android:id="@+id/quicksettings"
-                android:layout_width="36dp"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:clickable="true"
-                android:contentDescription="Quick Settings"
-                android:orientation="vertical"
-                android:scaleType="fitCenter"
-                android:src="@drawable/settings" />
+                    android:id="@+id/batt"
+                    android:layout_width="45dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/black_overlay"
+                    android:clickable="true"
+                    android:visibility="visible"
+                    android:contentDescription="Battery"
+                    android:orientation="vertical"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/nobattery" />
 
             <ImageButton
-                android:id="@+id/notification"
-                android:layout_width="36dp"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:clickable="true"
-                android:contentDescription="Notifications"
-                android:drawingCacheQuality="auto"
-                android:orientation="vertical"
-                android:scaleType="fitCenter"
-                android:src="@drawable/notification" />
+                    android:id="@+id/wifi"
+                    android:layout_width="45dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/black_overlay"
+                    android:clickable="true"
+                    android:contentDescription="Wifi"
+                    android:orientation="vertical"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/wirelessna" />
 
-            <ImageButton
-                android:id="@+id/homebutton"
-                android:layout_width="36dp"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:clickable="true"
-                android:contentDescription="Home"
-                android:orientation="vertical"
-                android:scaleType="fitCenter"
-                android:src="@drawable/homeicon" />
         </LinearLayout>
 
         <RelativeLayout
-            android:id="@+id/taskbar"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:layout_alignParentBottom="true"
-            android:layout_toLeftOf="@id/systemtray"
-            android:layout_toRightOf="@id/startbutton"
-            android:layoutDirection="ltr"
-            android:orientation="horizontal" >
+                android:id="@+id/taskbar"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_alignParentBottom="true"
+                android:layout_toLeftOf="@id/systemtray"
+                android:layout_toRightOf="@id/buttonlayout"
+                android:layoutDirection="ltr"
+                android:orientation="horizontal" >
 
             <GridView
-                android:id="@+id/fav_apps"
+                    android:id="@+id/fav_apps"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:alwaysDrawnWithCache="true"
+                    android:background="#00000000"
+                    android:columnWidth="36dp"
+                    android:drawSelectorOnTop="false"
+                    android:numColumns="auto_fit"
+                    android:persistentDrawingCache="animation|scrolling"
+                    android:scrollbars="none"
+                    android:stackFromBottom="true"
+                    android:stretchMode="spacingWidth"
+                    android:visibility="visible" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+            android:id="@+id/desktop"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_above="@id/fullscreen_content_controls"
+            android:orientation="vertical" >
+
+        <GridView
+                android:id="@+id/all_apps"
                 android:layout_width="match_parent"
-                android:layout_height="36dp"
+                android:layout_height="fill_parent"
                 android:alwaysDrawnWithCache="true"
                 android:background="#00000000"
-                android:columnWidth="36dp"
-                android:drawSelectorOnTop="false"
+                android:columnWidth="78dp"
+                android:drawSelectorOnTop="true"
                 android:numColumns="auto_fit"
                 android:persistentDrawingCache="animation|scrolling"
                 android:scrollbars="none"
                 android:stackFromBottom="true"
                 android:stretchMode="spacingWidth"
                 android:visibility="visible" />
-        </RelativeLayout>
-    </RelativeLayout>
-
-    <LinearLayout
-        android:id="@+id/desktop"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_above="@id/fullscreen_content_controls"
-        android:orientation="vertical" >
-
-        <GridView
-            android:id="@+id/all_apps"
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:alwaysDrawnWithCache="true"
-            android:background="#00000000"
-            android:columnWidth="78dp"
-            android:drawSelectorOnTop="true"
-            android:numColumns="auto_fit"
-            android:persistentDrawingCache="animation|scrolling"
-            android:scrollbars="none"
-            android:stackFromBottom="true"
-            android:stretchMode="spacingWidth"
-            android:visibility="visible" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/startmenu"
-        android:layout_width="200dp"
-        android:layout_height="400dp"
-        android:layout_above="@id/fullscreen_content_controls"
-        android:layout_alignParentLeft="true"
-        android:background="@color/black_overlay"
-        android:focusable="true"
-        android:orientation="vertical"
-        android:visibility="invisible" >
+            android:id="@+id/startmenu"
+            android:layout_width="200dp"
+            android:layout_height="fill_parent"
+            android:layout_above="@id/fullscreen_content_controls"
+            android:layout_alignParentLeft="true"
+            android:background="@color/black_overlay"
+            android:focusable="true"
+            android:orientation="vertical"
+            android:visibility="invisible" >
 
         <ListView
-            android:id="@+id/startlist"
-            android:layout_width="200dp"
-            android:layout_height="0dp"
-            android:layout_weight="1.0"
-            android:alwaysDrawnWithCache="true"
-            android:background="@color/black_overlay"
-            android:columnWidth="28dp"
-            android:fadeScrollbars="true"
-            android:fastScrollEnabled="true"
-            android:longClickable="true"
-            android:minHeight="2dp"
-            android:persistentDrawingCache="animation|scrolling"
-            android:scrollbarSize="20dp"
-            android:scrollbarStyle="insideInset"
-            android:scrollbars="vertical"
-            android:scrollingCache="true"
-            android:smoothScrollbar="true"
-            android:stackFromBottom="true"
-            android:textAlignment="gravity"
-            android:textDirection="ltr"
-            android:textFilterEnabled="true" >
+                android:id="@+id/startlist"
+                android:layout_width="200dp"
+                android:layout_height="0dp"
+                android:layout_weight="1.0"
+                android:alwaysDrawnWithCache="true"
+                android:background="@color/black_overlay"
+                android:columnWidth="28dp"
+                android:fadeScrollbars="true"
+                android:fastScrollEnabled="true"
+                android:longClickable="true"
+                android:minHeight="2dp"
+                android:persistentDrawingCache="animation|scrolling"
+                android:scrollbarSize="20dp"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:scrollingCache="true"
+                android:smoothScrollbar="true"
+                android:stackFromBottom="true"
+                android:textAlignment="gravity"
+                android:textDirection="ltr"
+                android:textFilterEnabled="true" >
+        </ListView>
+
+        <ListView
+                android:id="@+id/notificationlist"
+                android:layout_width="200dp"
+                android:layout_height="0dp"
+                android:layout_weight="1.0"
+                android:alwaysDrawnWithCache="true"
+                android:background="@color/black_overlay"
+                android:columnWidth="28dp"
+                android:fadeScrollbars="true"
+                android:fastScrollEnabled="true"
+                android:longClickable="true"
+                android:minHeight="2dp"
+                android:persistentDrawingCache="animation|scrolling"
+                android:scrollbarSize="20dp"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:scrollingCache="true"
+                android:smoothScrollbar="true"
+                android:stackFromBottom="true"
+                android:textAlignment="gravity"
+                android:textDirection="ltr"
+                android:textFilterEnabled="true" >
         </ListView>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/SettingsMenu"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_above="@id/fullscreen_content_controls"
-        android:layout_alignParentRight="true"
-        android:background="@color/black_overlay"
-        android:focusable="true"
-        android:orientation="vertical"
-        android:visibility="invisible" >
+            android:id="@+id/SettingsMenu"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_above="@id/fullscreen_content_controls"
+            android:layout_alignParentRight="true"
+            android:background="@color/black_overlay"
+            android:focusable="true"
+            android:orientation="vertical"
+            android:visibility="invisible" >
 
         <ListView
-            android:id="@+id/settingslist"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.0"
-            android:alwaysDrawnWithCache="true"
-            android:background="@color/black_overlay"
-            android:columnWidth="28dp"
-            android:fadeScrollbars="true"
-            android:fastScrollEnabled="true"
-            android:minHeight="2dp"
-            android:persistentDrawingCache="animation|scrolling"
-            android:scrollbarSize="20dp"
-            android:scrollbarStyle="insideInset"
-            android:scrollbars="vertical"
-            android:scrollingCache="true"
-            android:smoothScrollbar="true"
-            android:stackFromBottom="true"
-            android:textAlignment="gravity"
-            android:textDirection="ltr" >
+                android:id="@+id/settingslist"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.0"
+                android:alwaysDrawnWithCache="true"
+                android:background="@color/black_overlay"
+                android:columnWidth="28dp"
+                android:fadeScrollbars="true"
+                android:fastScrollEnabled="true"
+                android:minHeight="2dp"
+                android:persistentDrawingCache="animation|scrolling"
+                android:scrollbarSize="20dp"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:scrollingCache="true"
+                android:smoothScrollbar="true"
+                android:stackFromBottom="true"
+                android:textAlignment="gravity"
+                android:textDirection="ltr" >
         </ListView>
     </LinearLayout>
 
